@@ -1,0 +1,142 @@
+#include <stdio.h>
+
+float calculateGST(float price, float gst) {
+    return price + (price * gst / 100);
+}
+
+int res(int totalTables, int bookedTables) {
+    return totalTables - bookedTables;
+}
+
+int displayMenu() {
+    
+      float gst,price;
+    printf("\n  Menu list        GST     Price     ");
+        gst=2;
+        price=100;
+        printf("\n1.Chicken briyani  : %.2f : %.2f",gst,price);
+        gst = 5;
+        price = 150;
+        printf("\n2.Fish fry         : %.2f : %.2f",gst,price);
+        gst=4;
+        price=120;
+        printf("\n3.Butter naan      : %.2f : %.2f",gst,price);
+        gst=3;
+        price=80;
+        printf("\n4.Pepper chicken   : %.2f : %.2f",gst,price);
+        gst=2;
+        price=50;
+        printf("\n5.Noodles          : %.2f : %.2f",gst,price);
+        gst=1;
+        price=40;
+        printf("\n6.Juices           : %.2f : %.2f",gst,price);
+        gst=3;
+        price=70;
+        printf("\n7.Ice cream        : %.2f : %.2f",gst,price);
+        gst=7;
+        price=450;
+        printf("\n8.Cakes            : %.2f : %.2f",gst,price);
+        gst=3;
+        price=150;
+        printf("\n9.Pasta            : %.2f : %.2f",gst,price);
+        gst=3;
+        price=80;
+        printf("\n10.Starters         : %.2f : %.2f",gst,price);
+          
+}
+
+int main() {
+    int totalTables=10, bookedTables=5;
+    printf("Number of totalTables: %d\n",totalTables);
+    printf("Number of bookedTables: %d\n",bookedTables);
+
+    int available_tables = res(totalTables, bookedTables);
+    printf("Number of available_tables: %d\n", available_tables);
+
+    printf("   Tables arrangement\n");
+    for (int i = 0; i < available_tables; i++) {
+        for(int j=0;j <=i; j++){
+        printf(" *");
+    }
+    printf("\n");}
+
+    displayMenu();
+
+    int choice;
+    float totalAmount = 0.0;
+
+    printf("\nEnter the item number you want to order (0 to exit): ");
+    scanf("%d", &choice);
+
+    while (choice != 0) {
+        float price, gst;
+        switch (choice) {
+            case 1:
+                printf("1.Chicken Biryani  :2 :100 \n");
+                gst = 2.0;
+                price = 100.0;
+                break;
+            case 2:
+                printf("2.Fish Fry         :5 :150\n");
+                gst = 5.0;
+                price = 150.0;
+                break;
+            case 3:
+                printf("3.Butter Naan      :4 :120\n");
+                gst=4;
+                price=120;
+                break;
+            case 4:
+                printf("4.Pepper Chicken   :3 :80\n");
+                gst=3;
+                price=80;
+                break;
+            case 5:
+                printf("5.Noodles          :2 :50\n");
+                gst=2;
+                price=50;
+                break;
+            case 6:
+                printf("6.Juices           :1 :40\n");
+                gst=1;
+                price=40;
+                break;
+            case 7:
+                printf("7.Ice cream        :3 :70\n");
+                gst=3;
+                price=70;
+                break;
+            case 8:
+                printf("8.Cakes            :7 :450\n");
+                gst=7;
+                price=450;
+                break;
+            case 9:
+                printf("9.Pasta            :3 :150 \n");
+                gst=3;
+                price=150;
+                break;
+            case 10:
+                printf("10.Starters        :3 : 80\n");
+                 gst=3;
+                 price=80;
+                break;
+
+            default:
+                printf("Invalid choice. Please enter a valid item number.\n");
+                continue;
+        }
+
+        
+        float totalWithGST = calculateGST(price, gst);
+
+        
+        totalAmount += totalWithGST;
+
+        scanf("%d", &choice);
+    }
+
+    printf("\nTotal Bill Amount: %.2f\n", totalAmount);
+
+    return 0;
+}
